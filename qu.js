@@ -25,7 +25,7 @@ function main() {
   const qu = new Qu();
   qu.queue(10);
   qu.queue(20);
-  qu.queue(20);
+  qu.queue(30);
 
   qu.dequeue();
 
