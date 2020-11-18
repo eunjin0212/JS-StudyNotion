@@ -1,3 +1,5 @@
+[공부하러 가기📖](https://www.notion.so/841f77b1f4a44eb1bb468334eb37fc3e)
+
 ### 배열 내장 메소드
 
 #### every(function(elem){ 판별함수 return 값 }) : 배열 안에 모든 요소가 주어진 판별 함수를 통과하는지 체크
