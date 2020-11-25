@@ -1,6 +1,6 @@
 const { filterFunc } = require("./filter");
 
-class LinearQu {
+class LinearQueue {
   arr = [];
   front = 0;
   rear = 0;
@@ -29,7 +29,7 @@ class LinearQu {
 }
 
 function quFunc() {
-  const linearQu = new LinearQu();
+  const linearQu = new LinearQueue();
   linearQu.queue(20);
   linearQu.queue(40);
   linearQu.queue(10);
