@@ -1,42 +1,42 @@
 class Stack {
   arr = [];
-  top = 0; //현재 테이터가 저장 되어야 하는 배열의 인덱스
-  capacity = 10; //데이터 최대 수용 가능한 용량
+  capacity = 10;
+  rear = 0;
+
   push(data) {
-    if (this.top > this.capacity) {
-      throw new Error("Over capacity");
+    if (this.arr.length > this.capacity) {
+      throw Error("Over");
     }
-    this.arr[this.top++] = data;
-    //data in
-    //1. arr[top] = data;
-    //2. top++
+    return (this.arr[this.rear++] = data);
   }
   pop() {
-    if (this.top <= 0) {
-      throw new Error("The End");
-      //data out
+    let data;
+    if (this.rear <= 0) {
+      throw new Error("End");
     }
-    return this.arr[--this.top];
-  }
-  show() {
-    console.log(this.arr);
+    this.arr[--this.rear] = data;
+    this.arr.length--;
+    return data;
   }
   peek() {
-    if (this.top <= 0) {
-      throw new Error("No Data");
+    console.log(this.arr[this.rear - 1]);
+  }
+  show() {
+    if (this.arr.length <= 0) {
+      throw Error("없음");
     }
-    console.log(this.arr[this.top - 1]);
+    console.log(this.arr);
   }
 }
 
-function main() {
+function stackFunc() {
   const stack = new Stack();
-  stack.push(10);
-  stack.push(20);
+  stack.push(1);
+  stack.push(2);
+  stack.push(3);
+  stack.push(4);
   stack.show();
-
-  console.log(stack.pop());
-  console.log(stack.pop());
+  stack.pop();
   stack.show();
 }
-main();
+stackFunc();
