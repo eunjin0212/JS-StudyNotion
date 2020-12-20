@@ -1,50 +1,46 @@
-const { filterFunc } = require("./filter");
 class CircularQueue {
-  constructor() {
-    this.maxQueueSize = 5;
-    this.arr = [];
-    this.front = 0;
-    this.rear = 0;
-  }
+  capacity = 8;
+  arr = new Array(8);
+  front = 0;
+  rear = 0;
 
-  empyt() {
-    return this.front === this.rear;
-  }
-  full() {
-    return (this.rear + 1) % this.maxQueueSize === this.front;
-  }
-  queue(data) {
-    if (this.full()) {
-      throw Error("Over");
+  queue(n) {
+    if (this.front === this.rear && this.arr[this.front]) {
+      throw new Error("Queue is full");
     }
-    this.arr[(this.rear = (this.rear + 1) % this.maxQueueSize)] = data;
-    this.arr = filterFunc(this.arr, Boolean);
-    return data;
-  }
-  deQueue() {
-    if (this.empyt()) {
-      throw new Error("End");
-    } else {
-      let ret = this.arr[(this.front = (this.front + 1) % this.maxQueueSize)];
-      delete this.arr[(this.front = (this.front - 1) % this.maxQueueSize)];
-      this.front++;
-      this.arr = filterFunc(this.arr, Boolean);
-      return ret;
-    }
-  }
-  show() {
+
+    this.arr[this.rear] = n;
+    this.rear = (this.rear + 1) % this.capacity;
     console.log(this.arr);
   }
+
+  dequeue() {
+    if (typeof this.arr[this.front] !== "number") {
+      throw new Error("Nothing to queue");
+    }
+
+    const val = this.arr[this.front];
+    delete this.arr[this.front];
+
+    this.front = (this.front + 1) % this.capacity;
+    console.log(this.arr);
+    return val;
+  }
 }
-function circularQuFunc() {
-  const circularQu = new CircularQueue();
-  circularQu.full();
-  circularQu.queue(20);
-  circularQu.queue(7);
-  circularQu.queue(100);
-  circularQu.queue;
-  circularQu.show();
-  circularQu.deQueue();
-  circularQu.show();
-}
-circularQuFunc();
+
+const q = new CircularQueue();
+
+q.queue(10);
+q.queue(10);
+q.queue(10);
+q.queue(10);
+q.dequeue();
+q.dequeue();
+q.dequeue();
+q.queue(10);
+q.queue(10);
+q.queue(10);
+q.queue(10);
+q.queue(10);
+
+console.log(q.arr);
