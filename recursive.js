@@ -6,19 +6,19 @@ function factorial(n) {
   }
   return n * factorial(n - 1);
 }
-console.log(factorial(input));
+console.log("factorial :" + factorial(input));
 function fibo(n) {
-  if (n === 0 || n === 1 || arr[n]) {
+  if (n <= 1) {
     return arr[n];
   }
   arr[n] = fibo(n - 1) + fibo(n - 2);
+  console.log(arr[n]);
   return arr[n];
 }
-console.log(fibo(input));
+console.log("fibo :" + fibo(input));
 
 function fibo2(n) {
   if (n <= 1) return n;
   return fibo2(n - 1) + fibo2(n - 2);
 }
-
-console.log(fibo2(input));
+console.log("fibo2 :" + fibo2(input));
